@@ -186,6 +186,8 @@ public:
 
   virtual ICE::Endpoint* get_ice_endpoint() const;
 
+  virtual void dropped(const ReceivedDataSample& sample) const;
+
 #ifdef OPENDDS_SECURITY
   Security::SecurityConfig_rch security_config() const
   { return security_config_; }
@@ -551,6 +553,7 @@ private:
 
     bool add_writer(const WriterInfo_rch& info);
     bool has_writer(const RepoId& id) const;
+    bool has_preassociation_writer(const RepoId& id) const;
     bool remove_writer(const RepoId& id);
     size_t writer_count() const;
 
